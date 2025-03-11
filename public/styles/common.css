@@ -1,0 +1,23 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/Inter.ttf");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/Newsreader.ttf");
+}
+
+body {
+  font-family: "Inter";
+}
+
+.index-title {
+  font-size: 1rem;
+}
