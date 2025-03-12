@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/signup.css" />
+    <title>SkySafe</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <%- include('./partials/header')%>
+      <div class="content">
+        <div class="content-div">
+          <h2>Sign Up</h2>
+          <form action="/signup" method="post">
+            <div class="inputs">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+              />
+            </div>
+            <div class="inputs">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+              />
+            </div>
+            <div class="inputs">
+              <label for="passwordConfirm">Confirm Password</label>
+              <input
+                type="password"
+                name="passwordConfirm"
+                id="passwordConfirm"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <div class="form-button">
+              <button>Sign Up</button>
+              <div>
+                Already have an account ?
+                <a href="/login" class="login-link">Log in</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

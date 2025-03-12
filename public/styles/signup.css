@@ -1,0 +1,77 @@
+.content-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-div h2 {
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.content-div form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+}
+
+input {
+  background-color: var(--black);
+  color: var(--white);
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 10px 15px;
+}
+
+input:focus {
+  outline: 1px solid var(--blue);
+  border-color: var(--blue);
+  box-shadow: var(--blue) 1px 1px 19px 0px;
+}
+
+.red:focus {
+  outline: 1px solid var(--red);
+  border-color: var(--red);
+  box-shadow: var(--red) 1px 1px 19px 0px;
+}
+
+.green:focus {
+  outline: 1px solid var(--green);
+  border-color: var(--green);
+  box-shadow: var(--green) 1px 1px 19px 0px;
+}
+
+.form-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  font-weight: 500;
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  color: var(--white);
+  background-color: var(--black);
+  padding: 10px 15px;
+}
+
+.form-button div {
+  font-size: 0.8rem;
+  color: var(--text-gray);
+}
+
+.login-link {
+  color: var(--blue);
+  text-decoration: underline;
+}

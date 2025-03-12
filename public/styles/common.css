@@ -14,10 +14,83 @@
   src: url("/assets/Newsreader.ttf");
 }
 
-body {
-  font-family: "Inter";
+:root {
+  --black: rgb(0, 0, 0);
+  --white: rgb(255, 255, 255);
+  --text-gray: rgb(142, 142, 142);
+  --dark-gray: rgb(25, 25, 25);
+  --light-gray: rgb(54, 54, 54);
+  --blue: rgb(0, 157, 255);
+  --green: rgb(77, 218, 58);
+  --red: rgb(218, 71, 58);
 }
 
-.index-title {
-  font-size: 1rem;
+body {
+  font-family: "Inter";
+  background-color: var(--black);
+  color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.main-container {
+  padding: 10px 20vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header h1 {
+  flex: 1;
+  font-size: 1.5rem;
+}
+
+.login {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+}
+
+.signup {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 0px 12vw;
+}
+
+.content h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.signup-big {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
