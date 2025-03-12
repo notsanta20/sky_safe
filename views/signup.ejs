@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/common.css" />
-    <link rel="stylesheet" href="/styles/signup.css" />
+    <link rel="stylesheet" href="/styles/signup-login.css" />
     <title>SkySafe</title>
   </head>
   <body>
@@ -13,6 +13,7 @@
       <div class="content">
         <div class="content-div">
           <h2>Sign Up</h2>
+          <%- include('./partials/signupError')%>
           <form action="/signup" method="post">
             <div class="inputs">
               <label for="username">Username</label>
@@ -33,11 +34,11 @@
               />
             </div>
             <div class="inputs">
-              <label for="passwordConfirm">Confirm Password</label>
+              <label for="confirmPassword">Confirm Password</label>
               <input
                 type="password"
-                name="passwordConfirm"
-                id="passwordConfirm"
+                name="confirmPassword"
+                id="confirmPassword"
                 placeholder="Confirm Password"
               />
             </div>

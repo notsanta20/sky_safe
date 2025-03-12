@@ -4,18 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/common.css" />
-    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/signup-login.css" />
     <title>SkySafe</title>
   </head>
   <body>
     <div class="main-container">
       <%- include('./partials/header')%>
       <div class="content">
-        <h2>
-          Keep your data Secure and accessible anytime with
-          <span class="blue">SkySafe.</span>
-        </h2>
-        <a href="/signup" class="signup-big">Start for free</a>
+        <div class="content-div">
+          <h2>Log In</h2>
+          <form action="/login" method="post">
+            <div class="inputs">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+              />
+            </div>
+            <div class="inputs">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+              />
+            </div>
+            <div class="form-button">
+              <button>Log In</button>
+              <div>
+                Don't have an account ?
+                <a href="/signup" class="login-link">Sign Up</a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
