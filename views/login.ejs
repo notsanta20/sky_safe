@@ -13,6 +13,9 @@
       <div class="content">
         <div class="content-div">
           <h2>Log In</h2>
+          <%if(errors){ %>
+          <div class="errors"><%= errors%></div>
+          <%}%>
           <form action="/login" method="post">
             <div class="inputs">
               <label for="username">Username</label>

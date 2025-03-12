@@ -28,6 +28,9 @@ app.use(
   })
 );
 
+require(`./configs/passport`);
+app.use(passport.session());
+
 app.use(router);
 
 app.listen(

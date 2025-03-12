@@ -1,5 +1,7 @@
 function login(req, res, next) {
-  res.render(`login`);
+  const error = req.session.messages ? req.session.messages[0] : false;
+  req.session.messages = [];
+  res.render(`login`, { errors: error });
 }
 
 module.exports = login;
