@@ -1,5 +1,10 @@
 function signup(req, res, next) {
-  res.render(`signup`);
+  const auth = req.isAuthenticated();
+  if (auth) {
+    res.redirect(`/`);
+  } else {
+    res.render(`signup`, { auth: auth });
+  }
 }
 
 module.exports = signup;

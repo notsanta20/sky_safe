@@ -1,5 +1,9 @@
 <header class="header">
   <h1><a href="/">SkySafe</a></h1>
-  <a href="/login" class="login">Log In</a>
+  <%if(locals.auth){%>
+  <a href="/logout" class="log">Log Out</a>
+  <%} else{%>
+  <a href="/login" class="log">Log In</a>
   <a href="/signup" class="signup">Sign Up</a>
+  <%}%>
 </header>

@@ -1,5 +1,6 @@
 function index(req, res, next) {
-  res.render(`index`);
+  const auth = req.isAuthenticated();
+  res.render(`index`, { auth: auth });
 }
 
 module.exports = index;
