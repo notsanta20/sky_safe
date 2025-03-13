@@ -3,6 +3,8 @@ const uploadModal = document.querySelector(`.newFile-modal`);
 const closeBtn = document.querySelector(`.close-modal`);
 const fileBtn = document.querySelector(`.browse-btn`);
 const actionBtns = document.querySelectorAll(`.file-actions`);
+const folderModal = document.querySelector(`.newFolder-modal`);
+const folderBtn = document.querySelector(`.new-folder`);
 
 newFile.addEventListener(`click`, () => {
   fileBtn.value = ``;
@@ -12,6 +14,10 @@ newFile.addEventListener(`click`, () => {
 closeBtn.addEventListener(`click`, () => {
   fileBtn.value = ``;
   uploadModal.close();
+});
+
+folderBtn.addEventListener(`click`, () => {
+  folderModal.showModal();
 });
 
 actionBtns.forEach((btn) => {
