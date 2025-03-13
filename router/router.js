@@ -6,6 +6,7 @@ const signupPost = require(`../controllers/signupPost`);
 const login = require(`../controllers/login`);
 const passport = require(`passport`);
 const logout = require(`../controllers/logout`);
+const vault = require(`../controllers/vault`);
 
 router.get(`/`, index);
 router.get(`/signup`, signup);
@@ -14,11 +15,12 @@ router.get(`/login`, login);
 router.post(
   `/login`,
   passport.authenticate(`local`, {
-    successRedirect: `/`,
+    successRedirect: `/vault`,
     failureRedirect: `/login`,
     failureMessage: true,
   })
 );
 router.get(`/logout`, logout);
+router.get(`/vault`, vault);
 
 module.exports = router;

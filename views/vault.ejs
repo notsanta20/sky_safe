@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="stylesheet" href="/styles/vault.css" />
+    <title>SkySafe Vault</title>
+  </head>
+  <body>
+    <div class="vault-container">
+      <%- include('./partials/vaultHeader')%>
+      <section class="vault-content">
+        <div class="side-bar">
+          <div class="side-bar-icons">
+            <div class="side-icons new-file">
+              <img src="/assets/icons/page-plus-in.svg" alt="add new file" />
+              <span>New File</span>
+            </div>
+            <div class="side-icons new-folder">
+              <img src="/assets/icons/folder-plus.svg" alt="add new folder" />
+              <span>New Folder</span>
+            </div>
+          </div>
+        </div>
+        <div class="vault-main"></div>
+      </section>
+      <dialog class="newFile-modal">
+        <form action="">
+          <div class="modal-titlebar">
+            <div class="close-modal"></div>
+            <div>File Upload</div>
+          </div>
+          <div class="modal-content">
+            <input
+              type="file"
+              name="file"
+              class="browse-btn"
+              accept=".png,.jpg"
+            />
+          </div>
+          <div class="modal-footer">
+            <button class="upload">Upload</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+    <script src="/scripts/vaultIndex.js"></script>
+  </body>
+</html>

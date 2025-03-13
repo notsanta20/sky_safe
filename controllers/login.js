@@ -1,7 +1,7 @@
 function login(req, res, next) {
   const auth = req.isAuthenticated();
   if (auth) {
-    res.redirect(`/`);
+    res.redirect(`/vault`);
   } else {
     const error = req.session.messages ? req.session.messages[0] : false;
     req.session.messages = [];

@@ -1,0 +1,128 @@
+.vault-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5px 20px;
+  height: 100vh;
+}
+
+.vault-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.side-bar {
+}
+
+.side-bar-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.side-icons {
+  color: var(--white);
+  background-color: var(--black);
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.side-icons:hover {
+  cursor: pointer;
+}
+
+.side-icons > img {
+  width: 22px;
+}
+
+.vault-main {
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+}
+
+.newFile-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  background-color: var(--dark-gray);
+  border: none;
+  border-radius: 10px;
+  width: 400px;
+  height: 220px;
+}
+
+dialog::backdrop {
+  background-color: rgba(97, 97, 97, 0.404);
+  backdrop-filter: blur(2px);
+}
+
+.newFile-modal > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-titlebar {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-gray);
+  padding: 10px;
+}
+
+.close-modal {
+  width: 20px;
+  height: 20px;
+  border-radius: 25px;
+  background-color: var(--red);
+}
+
+.modal-titlebar div:last-child {
+  flex: 1;
+  text-align: center;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.browse-btn {
+  outline: none;
+}
+
+.browse-btn::file-selector-button {
+  background-color: var(--light-gray);
+  color: var(--white);
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.upload {
+  background-color: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+}
