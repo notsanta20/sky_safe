@@ -6,16 +6,22 @@ async function uploadFile(req, res, next) {
   const name = fileDetails.originalname;
   const size = fileDetails.size;
   const date = new Date();
-
+  const folderName = req.params.folderName ? req.params.folderName : "/";
   await prisma.files.create({
     data: {
       name: name,
       size: size,
       date: date,
+      location: folderName,
       usersId: req.user.id,
     },
   });
-  res.redirect(`/vault`);
+
+  if (folderName === `/`) {
+    res.redirect(`/vault`);
+  } else {
+    res.redirect(`/vault/${folderName}`);
+  }
 }
 
 module.exports = uploadFile;

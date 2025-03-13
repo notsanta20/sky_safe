@@ -7,6 +7,7 @@ const login = require(`../controllers/login`);
 const passport = require(`passport`);
 const logout = require(`../controllers/logout`);
 const vault = require(`../controllers/vault`);
+const vaultFolder = require(`../controllers/vaultFolder`);
 const uploadFile = require(`../controllers/uploadFile`);
 const uploads = require(`../configs/multerUploads`);
 
@@ -24,5 +25,7 @@ router.post(
 );
 router.get(`/logout`, logout);
 router.get(`/vault`, vault);
-router.post(`/vault/upload`, uploads.single(`file`), uploadFile);
+router.get(`/vault/:folderName`, vaultFolder);
+router.post(`/vault`, uploads.single(`file`), uploadFile);
+router.post(`/vault/:folderName`, uploads.single(`file`), uploadFile);
 module.exports = router;

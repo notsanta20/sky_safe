@@ -29,10 +29,11 @@ model Users {
 }
 
 model Files {
-  id      Int      @id @default(autoincrement())
-  name    String
-  size    Int
-  date    DateTime
-  owner   Users    @relation(fields: [usersId], references: [id])
-  usersId Int
+  id       Int      @id @default(autoincrement())
+  name     String
+  size     Int
+  date     DateTime
+  location String
+  owner    Users    @relation(fields: [usersId], references: [id])
+  usersId  Int
 }
