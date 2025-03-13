@@ -4,6 +4,7 @@
   gap: 20px;
   padding: 5px 20px;
   height: 100vh;
+  font-weight: 300;
 }
 
 .vault-content {
@@ -31,7 +32,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -40,12 +41,54 @@
 }
 
 .side-icons > img {
-  width: 22px;
+  width: 18px;
 }
 
 .vault-main {
   border: 1px solid var(--text-gray);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.files-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+.files-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.file-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.files-container li {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 150px 200px;
+  font-size: 0.8rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.files-odd {
+  background-color: var(--dark-gray);
+}
+
+.directory-container {
+  height: 30px;
+  border-top: 1px solid var(--text-gray);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 0.8rem;
 }
 
 .newFile-modal {

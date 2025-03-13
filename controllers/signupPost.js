@@ -33,13 +33,13 @@ const signupPost = [
     }
     const { username, password } = req.body;
     const { salt, hash } = passwordFunc.generateHash(password);
-    // await prisma.users.create({
-    //   data: {
-    //     username: username,
-    //     salt: salt,
-    //     hash: hash,
-    //   },
-    // });
+    await prisma.users.create({
+      data: {
+        username: username,
+        salt: salt,
+        hash: hash,
+      },
+    });
     res.redirect(`/login`);
   },
 ];

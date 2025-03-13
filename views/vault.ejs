@@ -23,7 +23,31 @@
             </div>
           </div>
         </div>
-        <div class="vault-main"></div>
+        <div class="vault-main">
+          <div class="files-container">
+            <ul>
+              <li>
+                <div class="file-title">Name</div>
+                <div class="file-title">Size</div>
+                <div class="file-title">Date Added</div>
+              </li>
+              <%data.forEach(d=>{if(d.id % 2 !== 0){%>
+              <li class="files-odd">
+                <div class="file-name"><%= d.name%></div>
+                <div class="file-size"><%= d.size%></div>
+                <div class="file-date"><%= d.date%></div>
+              </li>
+              <%}else{%>
+              <li>
+                <div class="file-name"><%= d.name%></div>
+                <div class="file-size"><%= d.size%></div>
+                <div class="file-date"><%= d.date%></div>
+              </li>
+              <%}})%>
+            </ul>
+          </div>
+          <div class="directory-container">Directory Placeholder</div>
+        </div>
       </section>
       <dialog class="newFile-modal">
         <form
