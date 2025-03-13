@@ -4,6 +4,7 @@ const closeBtn = document.querySelector(`.close-modal`);
 const fileBtn = document.querySelector(`.browse-btn`);
 
 newFile.addEventListener(`click`, () => {
+  fileBtn.value = ``;
   modal.showModal();
 });
 

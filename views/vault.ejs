@@ -26,7 +26,11 @@
         <div class="vault-main"></div>
       </section>
       <dialog class="newFile-modal">
-        <form action="">
+        <form
+          action="/vault/upload"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <div class="modal-titlebar">
             <div class="close-modal"></div>
             <div>File Upload</div>
