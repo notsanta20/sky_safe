@@ -30,18 +30,57 @@
                 <div class="file-title">Name</div>
                 <div class="file-title">Size</div>
                 <div class="file-title">Date Added</div>
+                <div class="file-title">Actions</div>
               </li>
-              <%data.forEach(d=>{if(d.id % 2 !== 0){%>
+              <%data.forEach((d,index)=>{if(index % 2 === 0){%>
               <li class="files-odd">
                 <div class="file-name"><%= d.name%></div>
                 <div class="file-size"><%= d.size%></div>
                 <div class="file-date"><%= d.date%></div>
+                <div class="file-actions">
+                  . . .
+                  <div class="action-buttons-container action-hide">
+                    <div class="action-buttons">
+                      <a
+                        href="/download?name=<%= d.name%>&location=<%= d.location%>"
+                        >Download</a
+                      >
+                      <a
+                        href="/share?name=<%= d.name%>&location=<%= d.location%>"
+                        >Share</a
+                      >
+                      <a
+                        href="/delete?name=<%= d.name%>&location=<%= d.location%>"
+                        >Delete</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </li>
               <%}else{%>
               <li>
                 <div class="file-name"><%= d.name%></div>
                 <div class="file-size"><%= d.size%></div>
                 <div class="file-date"><%= d.date%></div>
+                <div class="file-actions">
+                  . . .
+                  <div class="action-buttons-container action-hide">
+                    <div class="action-buttons">
+                      <a
+                        href="/download?name=<%= d.name%>&location=<%= d.location%>"
+                        >Download</a
+                      >
+                      <a
+                        href="/share?name=<%= d.name%>&location=<%= d.location%>"
+                        >Share</a
+                      >
+                      <a
+                        href="/delete?name=<%= d.name%>&location=<%= d.location%>"
+                        >Delete</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </li>
               <%}})%>
             </ul>
