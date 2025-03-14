@@ -5,17 +5,27 @@ const { format } = require(`date-fns`);
 async function vault(req, res, next) {
   const auth = req.isAuthenticated();
   if (auth) {
-    const data = await prisma.files.findMany({
+    const foldersData = await prisma.folders.findMany({
+      where: {
+        usersId: req.user.id,
+      },
+    });
+    const filesData = await prisma.files.findMany({
       where: {
         usersId: req.user.id,
         location: `/`,
       },
     });
-    data.forEach((d) => {
+    filesData.forEach((d) => {
       const time = format(d.date, `MMMM dd, yyyy`);
       d.date = time;
     });
-    res.render(`vault`, { data: data, reqParams: "vault" });
+    res.render(`vault`, {
+      folders: foldersData,
+      data: filesData,
+      reqParams: "vault",
+      url: "/",
+    });
   } else {
     res.redirect(`/`);
   }

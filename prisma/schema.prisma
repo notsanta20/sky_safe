@@ -21,11 +21,12 @@ model Session {
 }
 
 model Users {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
+  id       Int       @id @default(autoincrement())
+  username String    @unique
   salt     String
   hash     String
   Files    Files[]
+  Folders  Folders[]
 }
 
 model Files {
@@ -35,5 +36,13 @@ model Files {
   date     DateTime
   location String
   owner    Users    @relation(fields: [usersId], references: [id])
+  usersId  Int
+}
+
+model Folders {
+  id       Int    @id @default(autoincrement())
+  name     String @default("/")
+  location String
+  owner    Users  @relation(fields: [usersId], references: [id])
   usersId  Int
 }

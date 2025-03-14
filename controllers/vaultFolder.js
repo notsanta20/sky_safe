@@ -3,18 +3,30 @@ const prisma = new PrismaClient();
 const { format } = require(`date-fns`);
 
 async function vaultFolder(req, res, next) {
-  const data = await prisma.files.findMany({
+  const foldersData = await prisma.folders.findMany({
+    where: {
+      usersId: req.user.id,
+      location: `/vault/${req.params.folderName}`,
+    },
+  });
+  console.log(foldersData);
+  const filesData = await prisma.files.findMany({
     where: {
       usersId: req.user.id,
       location: req.params.folderName,
     },
   });
-  data.forEach((d) => {
+  filesData.forEach((d) => {
     const time = format(d.date, `MMMM dd, yyyy`);
     d.date = time;
   });
   const link = req.params.folderName;
-  res.render(`vault`, { data: data, reqParams: link });
+  res.render(`vault`, {
+    folders: foldersData,
+    data: filesData,
+    reqParams: link,
+    url: link,
+  });
 }
 
 module.exports = vaultFolder;

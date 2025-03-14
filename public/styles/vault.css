@@ -158,7 +158,8 @@ dialog::backdrop {
   font-size: 0.9rem;
 }
 
-.close-modal {
+.close-modal,
+.close-newFolder-modal {
   width: 15px;
   height: 15px;
   border-radius: 25px;

@@ -22,6 +22,13 @@
               <span>New Folder</span>
             </div>
           </div>
+          <div>
+            <ul>
+              <%folders.forEach(f=>{%>
+              <a href="/vault/<%= f.name%>"><%= f.name%></a>
+              <%})%>
+            </ul>
+          </div>
         </div>
         <div class="vault-main">
           <div class="files-container">
@@ -112,13 +119,18 @@
         </form>
       </dialog>
       <dialog class="newFolder-modal">
-        <form action="/addFolder" method="post">
+        <form action="/addFolder?url=<%= url%>" method="post">
           <div class="modal-titlebar">
-            <div class="close-modal"></div>
+            <div class="close-newFolder-modal"></div>
             <div>Add Folder</div>
           </div>
           <div class="newFolder-modal-footer">
-            <input type="text" name="folderName" placeholder="Folder name" />
+            <input
+              type="text"
+              name="folderName"
+              placeholder="Folder name"
+              class="folder-input"
+            />
             <button>Add Folder</button>
           </div>
         </form>

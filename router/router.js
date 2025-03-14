@@ -10,6 +10,7 @@ const vault = require(`../controllers/vault`);
 const vaultFolder = require(`../controllers/vaultFolder`);
 const uploadFile = require(`../controllers/uploadFile`);
 const uploads = require(`../configs/multerUploads`);
+const newFolder = require(`../controllers/newFolder`);
 
 router.get(`/`, index);
 router.get(`/signup`, signup);
@@ -28,4 +29,5 @@ router.get(`/vault`, vault);
 router.get(`/vault/:folderName`, vaultFolder);
 router.post(`/vault`, uploads.single(`file`), uploadFile);
 router.post(`/vault/:folderName`, uploads.single(`file`), uploadFile);
+router.post(`/addFolder`, newFolder);
 module.exports = router;

@@ -25,3 +25,9 @@ async function uploadFile(req, res, next) {
 }
 
 module.exports = uploadFile;
+
+// async function main() {
+//   await prisma.folders.deleteMany({});
+// }
+
+// main();
