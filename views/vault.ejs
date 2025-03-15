@@ -22,11 +22,22 @@
               <span>New Folder</span>
             </div>
           </div>
-          <div>
+          <div class="folders-container">
             <ul>
-              <%folders.forEach(f=>{%>
-              <a href="/vault/<%= f.name%>"><%= f.name%></a>
-              <%})%>
+              <% folders.forEach(f=>{ %>
+              <li>
+                <a href="/vault/<%= f.id %>"><%= f.name %></a>
+                <% if(f.children.length > 0){ %>
+                <ul class="children">
+                  <% f.children.forEach(c=>{ %>
+                  <li>
+                    <a href="/vault/<%= c.id %>"><%= c.name %></a>
+                  </li>
+                  <% }) %>
+                </ul>
+                <% } %>
+              </li>
+              <% }) %>
             </ul>
           </div>
         </div>
@@ -39,7 +50,7 @@
                 <div class="file-title">Date Added</div>
                 <div class="file-title">Actions</div>
               </li>
-              <%data.forEach((d,index)=>{if(index % 2 === 0){%>
+              <%files.forEach((d,index)=>{if(index % 2 === 0){%>
               <li class="files-odd">
                 <div class="file-name"><%= d.name%></div>
                 <div class="file-size"><%= d.size%></div>
@@ -119,7 +130,7 @@
         </form>
       </dialog>
       <dialog class="newFolder-modal">
-        <form action="/addFolder?url=<%= url%>" method="post">
+        <form action="/addFolder?url=<%= folderQuery%>" method="post">
           <div class="modal-titlebar">
             <div class="close-newFolder-modal"></div>
             <div>Add Folder</div>

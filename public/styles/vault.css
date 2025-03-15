@@ -16,6 +16,9 @@
 }
 
 .side-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .side-bar-icons {
@@ -42,6 +45,12 @@
 
 .side-icons > img {
   width: 18px;
+}
+
+.folders-container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .vault-main {

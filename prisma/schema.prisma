@@ -30,7 +30,7 @@ model Users {
 }
 
 model Files {
-  id       Int      @id @default(autoincrement())
+  id       String   @id @default(uuid())
   name     String
   size     Int
   date     DateTime
@@ -40,9 +40,11 @@ model Files {
 }
 
 model Folders {
-  id       Int    @id @default(autoincrement())
-  name     String @default("/")
-  location String
-  owner    Users  @relation(fields: [usersId], references: [id])
+  id       String    @id @default(uuid())
+  name     String    @default("/")
+  parentId String?
+  parent   Folders?  @relation("parentChildren", fields: [parentId], references: [id])
+  children Folders[] @relation("parentChildren")
+  owner    Users     @relation(fields: [usersId], references: [id])
   usersId  Int
 }

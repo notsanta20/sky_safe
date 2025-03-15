@@ -30,4 +30,14 @@ module.exports = uploadFile;
 //   await prisma.folders.deleteMany({});
 // }
 
+// async function main() {
+//   await prisma.folders.create({
+//     data: {
+//       name: "new_folder",
+//       parentId: null,
+//       usersId: 1,
+//     },
+//   });
+// }
+
 // main();
