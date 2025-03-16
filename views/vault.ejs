@@ -24,13 +24,28 @@
           </div>
           <div class="folders-container">
             <ul>
-              <% folders.forEach(f=>{ %>
+              <% if(folderQuery !== `/`){ %>
+              <a href="/vault">
+                <img src="/assets/icons/undo.svg" alt="back" />
+              </a>
+              <% } %> <% folders.forEach(f=>{ %>
               <li>
-                <a href="/vault/<%= f.id %>"><%= f.name %></a>
+                <div class="folder-li">
+                  <img
+                    src="/assets/icons/folder.svg"
+                    alt="folder-<%= f.name%>"
+                  />
+                  <a href="/vault/<%= f.id %>"><%= f.name %></a>
+                </div>
                 <% if(f.children.length > 0){ %>
                 <ul class="children">
                   <% f.children.forEach(c=>{ %>
-                  <li>
+                  <li class="child-li">
+                    <img src="/assets/icons/minus.svg" alt="child-folder" />
+                    <img
+                      src="/assets/icons/folder.svg"
+                      alt="folder-<%= c.name%>"
+                    />
                     <a href="/vault/<%= c.id %>"><%= c.name %></a>
                   </li>
                   <% }) %>
@@ -68,7 +83,7 @@
                         >Share</a
                       >
                       <a
-                        href="/delete?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/deleteFile?name=<%= d.name%>&location=<%= d.location%>"
                         >Delete</a
                       >
                     </div>
@@ -93,7 +108,7 @@
                         >Share</a
                       >
                       <a
-                        href="/delete?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/deleteFile?name=<%= d.name%>&location=<%= d.location%>"
                         >Delete</a
                       >
                     </div>

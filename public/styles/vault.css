@@ -53,6 +53,27 @@
   gap: 10px;
 }
 
+.folders-container ul > li {
+  list-style: none;
+}
+
+.folder-li,
+.child-li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.folder-li > img,
+.child-li > img {
+  width: 20px;
+}
+
+.children {
+  padding-left: 20px;
+}
+
 .vault-main {
   border: 1px solid var(--text-gray);
   border-radius: 10px;

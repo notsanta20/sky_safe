@@ -35,6 +35,7 @@ model Files {
   size     Int
   date     DateTime
   location String
+  path     String
   owner    Users    @relation(fields: [usersId], references: [id])
   usersId  Int
 }

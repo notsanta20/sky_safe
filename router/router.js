@@ -11,6 +11,9 @@ const vaultFolder = require(`../controllers/vaultFolder`);
 const uploadFile = require(`../controllers/uploadFile`);
 const uploads = require(`../configs/multerUploads`);
 const newFolder = require(`../controllers/newFolder`);
+const deleteFile = require(`../controllers/deleteFile`);
+const downloadFile = require(`../controllers/downloadFile`);
+const shareFile = require(`../controllers/shareFile`);
 
 router.get(`/`, index);
 router.get(`/signup`, signup);
@@ -30,4 +33,7 @@ router.get(`/vault/:folderName`, vaultFolder);
 router.post(`/vault`, uploads.single(`file`), uploadFile);
 router.post(`/vault/:folderName`, uploads.single(`file`), uploadFile);
 router.post(`/addFolder`, newFolder);
+router.get(`/deleteFile`, deleteFile);
+router.get(`/download`, downloadFile);
+router.get(`/share`, shareFile);
 module.exports = router;
