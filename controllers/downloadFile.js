@@ -14,7 +14,7 @@ async function downloadFile(req, res, next) {
 
   const filePath = path.join(__dirname, `../`, file.path);
 
-  res.download(filePath, (err) => {
+  res.download(filePath, name, (err) => {
     if (err) {
       console.error(err);
     }

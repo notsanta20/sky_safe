@@ -1,5 +1,9 @@
 const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
+const fs = require("fs");
+const { promisify } = require("util");
+
+const unlinkAsync = promisify(fs.unlink);
 
 async function uploadFile(req, res, next) {
   const fileDetails = req.file;
@@ -29,6 +33,7 @@ async function uploadFile(req, res, next) {
       },
     });
   } else {
+    await unlinkAsync(path);
     console.log(`File already exists`);
   }
 
