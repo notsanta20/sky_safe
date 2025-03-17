@@ -26,21 +26,25 @@ const validate = [
 const signupPost = [
   validate,
   async (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      console.log(errors.array());
-      return res.status(400).render("signup", { errors: errors.array() });
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log(errors.array());
+        return res.status(400).render("signup", { errors: errors.array() });
+      }
+      const { username, password } = req.body;
+      const { salt, hash } = passwordFunc.generateHash(password);
+      await prisma.users.create({
+        data: {
+          username: username,
+          salt: salt,
+          hash: hash,
+        },
+      });
+      res.redirect(`/login`);
+    } catch (err) {
+      console.error(err);
     }
-    const { username, password } = req.body;
-    const { salt, hash } = passwordFunc.generateHash(password);
-    await prisma.users.create({
-      data: {
-        username: username,
-        salt: salt,
-        hash: hash,
-      },
-    });
-    res.redirect(`/login`);
   },
 ];
 

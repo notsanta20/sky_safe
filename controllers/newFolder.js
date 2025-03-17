@@ -11,18 +11,10 @@ const validate = [
 ];
 
 async function newFolder(req, res, next) {
-  const { folderName } = req.body;
-  const url = req.query.url === `/` ? null : req.query.url;
+  try {
+    const { folderName } = req.body;
+    const url = req.query.url === `/` ? null : req.query.url;
 
-  const alreadyExists = await prisma.folders.findFirst({
-    where: {
-      name: folderName,
-      parentId: url,
-      usersId: req.user.id,
-    },
-  });
-
-  if (!alreadyExists) {
     let parent = url;
     if (url) {
       parent = await prisma.folders.findFirst({
@@ -41,11 +33,11 @@ async function newFolder(req, res, next) {
         parentId: parent,
       },
     });
-  } else {
-    console.log(`folder already exists`);
-  }
 
-  res.redirect(`/vault`);
+    res.redirect(`/vault`);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 module.exports = newFolder;

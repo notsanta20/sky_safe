@@ -4,11 +4,11 @@ const path = require(`path`);
 
 async function shareFile(req, res, next) {
   try {
-    const { id } = req.query;
+    const { shareId } = req.params;
 
     const file = await prisma.files.findFirst({
       where: {
-        id: id,
+        id: shareId,
       },
     });
 

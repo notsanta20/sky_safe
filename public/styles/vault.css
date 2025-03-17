@@ -176,7 +176,8 @@
 }
 
 .newFile-modal,
-.newFolder-modal {
+.newFolder-modal,
+.share-modal {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -194,7 +195,8 @@ dialog::backdrop {
 }
 
 .newFile-modal > form,
-.newFolder-modal > form {
+.newFolder-modal > form,
+.share-modal > form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -209,7 +211,8 @@ dialog::backdrop {
 }
 
 .close-modal,
-.close-newFolder-modal {
+.close-newFolder-modal,
+.close-share-modal {
   width: 15px;
   height: 15px;
   border-radius: 25px;
@@ -246,6 +249,26 @@ dialog::backdrop {
   justify-content: flex-end;
   align-items: center;
   padding: 0px 20px;
+}
+
+.share-modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.share-modal-footer label {
+  font-size: 0.8rem;
+}
+
+.share-modal-footer > select,
+.share-modal-footer > button {
+  background-color: var(--light-gray);
+  color: var(--white);
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  padding: 10px 15px;
 }
 
 .upload {

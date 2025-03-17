@@ -6,41 +6,45 @@ const { promisify } = require("util");
 const unlinkAsync = promisify(fs.unlink);
 
 async function uploadFile(req, res, next) {
-  const fileDetails = req.file;
-  const name = fileDetails.originalname;
-  const size = fileDetails.size;
-  const path = fileDetails.path;
-  const date = new Date();
-  const folderName = req.params.folderName ? req.params.folderName : "/";
+  try {
+    const fileDetails = req.file;
+    const name = fileDetails.originalname;
+    const size = fileDetails.size;
+    const path = fileDetails.path;
+    const date = new Date();
+    const folderName = req.params.folderName ? req.params.folderName : "/";
 
-  const alreadyExist = await prisma.files.findFirst({
-    where: {
-      name: name,
-      location: folderName,
-      usersId: req.user.id,
-    },
-  });
-
-  if (!alreadyExist) {
-    await prisma.files.create({
-      data: {
+    const alreadyExist = await prisma.files.findFirst({
+      where: {
         name: name,
-        size: size,
-        date: date,
         location: folderName,
-        path: path,
         usersId: req.user.id,
       },
     });
-  } else {
-    await unlinkAsync(path);
-    console.log(`File already exists`);
-  }
 
-  if (folderName === `/`) {
-    res.redirect(`/vault`);
-  } else {
-    res.redirect(`/vault/${folderName}`);
+    if (!alreadyExist) {
+      await prisma.files.create({
+        data: {
+          name: name,
+          size: size,
+          date: date,
+          location: folderName,
+          path: path,
+          usersId: req.user.id,
+        },
+      });
+    } else {
+      await unlinkAsync(path);
+      console.log(`File already exists`);
+    }
+
+    if (folderName === `/`) {
+      res.redirect(`/vault`);
+    } else {
+      res.redirect(`/vault/${folderName}`);
+    }
+  } catch (err) {
+    console.error(err);
   }
 }
 

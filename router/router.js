@@ -37,5 +37,5 @@ router.post(`/addFolder`, newFolder);
 router.get(`/deleteFolder`, deleteFolder);
 router.get(`/deleteFile`, deleteFile);
 router.get(`/download`, downloadFile);
-router.get(`/share`, shareFile);
+router.get(`/share/:shareId`, shareFile);
 module.exports = router;

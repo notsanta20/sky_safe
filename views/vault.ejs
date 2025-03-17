@@ -90,8 +90,7 @@
                         href="/download?name=<%= d.name%>&location=<%= d.location%>"
                         >Download</a
                       >
-                      <a
-                        href="/share?name=<%= d.name%>&location=<%= d.location%>"
+                      <a href="" class="share-btn" data-id="<%= d.id%>"
                         >Share</a
                       >
                       <a
@@ -170,6 +169,25 @@
               class="folder-input"
             />
             <button>Add Folder</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog class="share-modal">
+        <form action="">
+          <div class="modal-titlebar">
+            <div class="close-share-modal"></div>
+            <div>Share File</div>
+          </div>
+          <div class="share-modal-footer">
+            <label for="duration">Select Duration</label>
+            <select name="duration" id="duration">
+              <option value="">Please chose a option</option>
+              <option value="1m">10 Min</option>
+              <option value="1h">1 hr</option>
+              <option value="10h">10 hr</option>
+              <option value="1d">1 D</option>
+            </select>
+            <button class="get-link">Get Link</button>
           </div>
         </form>
       </dialog>
