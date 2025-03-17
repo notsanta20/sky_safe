@@ -65,14 +65,8 @@
 .child-li {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 5px;
   font-size: 0.9rem;
-}
-
-.folder-li div:first-child,
-.child-li div:first-child {
-  flex: 1;
 }
 
 .folder-li img,
@@ -80,8 +74,24 @@
   width: 20px;
 }
 
+.folder-li div:first-child,
+.child-li div:first-child {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.folder-li a > img,
+.child-li a > img {
+  width: 15px;
+}
+
 .children {
   padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .vault-main {
@@ -119,25 +129,21 @@
   align-items: center;
 }
 
-.file-actions,
-.folder-actions {
+.file-actions {
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-.file-actions:hover,
-.folder-actions:hover {
+.file-actions:hover {
   cursor: pointer;
 }
 
-.file-actions > img,
-.folder-actions > img {
+.file-actions > img {
   width: 20px;
 }
 
-.action-buttons-container,
-.folder-actions-container {
+.action-buttons-container {
   background-color: var(--dark-gray);
   border-radius: 10px;
   padding: 10px;
@@ -146,8 +152,7 @@
   z-index: 2;
 }
 
-.action-buttons,
-.folder-buttons {
+.action-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;

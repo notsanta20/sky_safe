@@ -38,21 +38,10 @@
                     />
                     <a href="/vault/<%= f.id %>"><%= f.name %></a>
                   </div>
-                  <div class="folder-actions">
-                    <img src="/assets/icons/more-horiz.svg" alt="menu icon" />
-                    <div class="folder-actions-container action-hide">
-                      <div class="folder-buttons">
-                        <a
-                          href="/renameFolder?name=<%= f.name%>&parent=<%= f.parentId%>"
-                          >Rename</a
-                        >
-                        <a
-                          href="/deleteFolder?name=<%= f.name%>&parent=<%= f.parentId%>"
-                          >Delete</a
-                        >
-                      </div>
-                    </div>
-                  </div>
+                  <a
+                    href="/deleteFolder?name=<%= f.name %>&parent=<%= f.parentId %>"
+                    ><img src="/assets/icons/bin.svg" alt="delete folder"
+                  /></a>
                 </div>
                 <% if(f.children.length > 0){ %>
                 <ul class="children">
@@ -66,21 +55,10 @@
                       />
                       <a href="/vault/<%= c.id %>"><%= c.name %></a>
                     </div>
-                    <div class="folder-actions">
-                      <img src="/assets/icons/more-horiz.svg" alt="menu icon" />
-                      <div class="folder-actions-container action-hide">
-                        <div class="folder-buttons">
-                          <a
-                            href="/renameFolder?name=<%= c.name%>&parent=<%= c.parentId%>"
-                            >Rename</a
-                          >
-                          <a
-                            href="/deleteFolder?name=<%= c.name%>&parent=<%= c.parentID%>"
-                            >Delete</a
-                          >
-                        </div>
-                      </div>
-                    </div>
+                    <a
+                      href="/deleteFolder?name=<%= c.name %>&parent=<%= c.parentId %>"
+                      ><img src="/assets/icons/bin.svg" alt="delete folder"
+                    /></a>
                   </li>
                   <% }) %>
                 </ul>
