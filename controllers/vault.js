@@ -1,7 +1,6 @@
 const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
 const { format } = require(`date-fns`);
-const { get } = require("../router/router");
 const getSize = require(`../configs/getSize`);
 
 async function vault(req, res, next) {

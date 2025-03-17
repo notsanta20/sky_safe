@@ -4,6 +4,7 @@ const closeBtn = document.querySelector(`.close-modal`);
 const closeFolderBtn = document.querySelector(`.close-newFolder-modal`);
 const fileBtn = document.querySelector(`.browse-btn`);
 const actionBtns = document.querySelectorAll(`.file-actions`);
+const folderActionBtns = document.querySelectorAll(`.folder-actions`);
 const folderModal = document.querySelector(`.newFolder-modal`);
 const folderBtn = document.querySelector(`.new-folder`);
 const folderInput = document.querySelector(`.folder-input`);
@@ -29,6 +30,13 @@ closeFolderBtn.addEventListener(`click`, () => {
 });
 
 actionBtns.forEach((btn) => {
+  btn.addEventListener(`click`, (e) => {
+    const btn = e.target.nextElementSibling;
+    btn.classList.toggle(`action-hide`);
+  });
+});
+
+folderActionBtns.forEach((btn) => {
   btn.addEventListener(`click`, (e) => {
     const btn = e.target.nextElementSibling;
     btn.classList.toggle(`action-hide`);
