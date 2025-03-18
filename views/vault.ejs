@@ -59,7 +59,7 @@
                       <a href="/vault/<%= c.id %>"><%= c.name %></a>
                     </div>
                     <a
-                      href="/deleteFolder?name=<%= c.name %>&parent=<%= c.parentId %>"
+                      href="/deleteFolder?id=<%= c.id %>&parent=<%= c.parentId %>"
                       ><img src="/assets/icons/bin.svg" alt="delete folder"
                     /></a>
                   </li>
@@ -90,14 +90,14 @@
                   <div class="action-buttons-container action-hide">
                     <div class="action-buttons">
                       <a
-                        href="/download?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/download?name=<%= d.name%>&location=<%= d.folderId%>"
                         >Download</a
                       >
                       <a href="" class="share-btn" data-id="<%= d.id%>"
                         >Share</a
                       >
                       <a
-                        href="/deleteFile?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/deleteFile?id=<%= d.id%>&location=<%= d.folderId%>"
                         >Delete</a
                       >
                     </div>
@@ -114,14 +114,14 @@
                   <div class="action-buttons-container action-hide">
                     <div class="action-buttons">
                       <a
-                        href="/download?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/download?name=<%= d.name%>&location=<%= d.folderId%>"
                         >Download</a
                       >
                       <a href="" class="share-btn" data-id="<%= d.id%>"
                         >Share</a
                       >
                       <a
-                        href="/deleteFile?name=<%= d.name%>&location=<%= d.location%>"
+                        href="/deleteFile?id=<%= d.id%>&location=<%= d.folderId%>"
                         >Delete</a
                       >
                     </div>
