@@ -24,11 +24,15 @@
           </div>
           <div class="folders-container">
             <ul>
-              <% if(folderQuery !== `/`){ %>
-              <a href="/vault">
-                <img src="/assets/icons/undo.svg" alt="back" />
-              </a>
-              <% } %> <% folders.forEach(f=>{ %>
+              <div class="username-side">
+                <div>Username</div>
+                <% if(folderQuery !== `/`){ %>
+                <a href="/vault">
+                  <img src="/assets/icons/undo.svg" alt="back" />
+                </a>
+                <% } %>
+              </div>
+              <% folders.forEach(f=>{ %>
               <li>
                 <div class="folder-li">
                   <div>
@@ -38,8 +42,7 @@
                     />
                     <a href="/vault/<%= f.id %>"><%= f.name %></a>
                   </div>
-                  <a
-                    href="/deleteFolder?name=<%= f.name %>&parent=<%= f.parentId %>"
+                  <a href="/deleteFolder?id=<%= f.id %>"
                     ><img src="/assets/icons/bin.svg" alt="delete folder"
                   /></a>
                 </div>
@@ -142,12 +145,7 @@
             <div>File Upload</div>
           </div>
           <div class="modal-content">
-            <input
-              type="file"
-              name="file"
-              class="browse-btn"
-              accept=".png,.jpg"
-            />
+            <input type="file" name="file" class="browse-btn" />
           </div>
           <div class="modal-footer">
             <button class="upload">Upload</button>

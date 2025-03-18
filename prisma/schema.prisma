@@ -33,8 +33,9 @@ model Files {
   id       String   @id @default(uuid())
   name     String
   size     Int
-  date     DateTime
-  location String
+  date     DateTime @default(now())
+  folderId String?
+  folder   Folders? @relation(fields: [folderId], references: [id], onDelete: Cascade)
   path     String
   owner    Users    @relation(fields: [usersId], references: [id])
   usersId  Int
@@ -44,10 +45,11 @@ model Folders {
   id       String    @id @default(uuid())
   name     String    @default("/")
   parentId String?
-  parent   Folders?  @relation("parentChildren", fields: [parentId], references: [id])
+  parent   Folders?  @relation("parentChildren", fields: [parentId], references: [id], onDelete: Cascade)
   children Folders[] @relation("parentChildren")
   owner    Users     @relation(fields: [usersId], references: [id])
   usersId  Int
+  Files    Files[]
 }
 
 model LinkSession {

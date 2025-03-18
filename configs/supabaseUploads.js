@@ -1,9 +1,15 @@
 const supabaseAdmin = require(`../db/supabase`);
 
-async function uploadFile(file, name) {
+async function uploadFile(userId, folderId, file) {
   const { data, error } = await supabaseAdmin.storage
     .from("file-uploader")
-    .upload(`files/${name}`, file);
+    .upload(`${userId}/${folderId}/${file.originalname}`, file.path, {
+      contentType: file.mimetype,
+    });
+
+  if (error) {
+    console.error(error);
+  }
 
   console.log(`File uploaded to files/`);
 }

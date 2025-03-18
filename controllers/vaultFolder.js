@@ -18,7 +18,7 @@ async function vaultFolder(req, res, next) {
       const filesData = await prisma.files.findMany({
         where: {
           usersId: req.user.id,
-          location: req.params.folderName,
+          folderId: req.params.folderName,
         },
       });
       filesData.forEach((d) => {

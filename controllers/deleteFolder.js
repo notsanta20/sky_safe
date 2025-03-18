@@ -6,20 +6,12 @@ async function deleteFolder(req, res, next) {
 
   if (auth) {
     try {
-      let { name, parent } = req.query;
-      parent = parent === `` ? null : parent;
-      const folder = await prisma.folders.findFirst({
+      let { id } = req.query;
+      await prisma.folders.delete({
         where: {
-          name: name,
-          parentId: parent,
-          usersId: req.user.id,
-        },
-        include: {
-          children: true,
+          id: id,
         },
       });
-
-      console.log(folder);
 
       res.redirect(`/vault`);
     } catch (err) {

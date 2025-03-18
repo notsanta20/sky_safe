@@ -8,16 +8,14 @@ const unlinkAsync = promisify(fs.unlink);
 async function uploadFile(req, res, next) {
   try {
     const fileDetails = req.file;
-    const name = fileDetails.originalname;
-    const size = fileDetails.size;
-    const path = fileDetails.path;
-    const date = new Date();
     const folderName = req.params.folderName ? req.params.folderName : "/";
-    supabaseUploads(fileDetails, fileDetails.originalname);
+
+    supabaseUploads(req.user.id, folderName, req.file);
+
     const alreadyExist = await prisma.files.findFirst({
       where: {
-        name: name,
-        location: folderName,
+        name: fileDetails.name,
+        folderId: folderName,
         usersId: req.user.id,
       },
     });
@@ -25,16 +23,15 @@ async function uploadFile(req, res, next) {
     if (!alreadyExist) {
       await prisma.files.create({
         data: {
-          name: name,
-          size: size,
-          date: date,
-          location: folderName,
-          path: path,
+          name: fileDetails.originalname,
+          size: fileDetails.size,
+          folderId: folderName,
+          path: fileDetails.path,
           usersId: req.user.id,
         },
       });
     } else {
-      await unlinkAsync(path);
+      await unlinkAsync(fileDetails.path);
       console.log(`File already exists`);
     }
 
@@ -44,24 +41,9 @@ async function uploadFile(req, res, next) {
       res.redirect(`/vault/${folderName}`);
     }
   } catch (err) {
+    await unlinkAsync(req.file.path);
     console.error(err);
   }
 }
 
 module.exports = uploadFile;
-
-// async function main() {
-//   await prisma.files.deleteMany({});
-// }
-
-// async function main() {
-//   await prisma.folders.create({
-//     data: {
-//       name: "new_folder",
-//       parentId: null,
-//       usersId: 1,
-//     },
-//   });
-// }
-
-// main();
