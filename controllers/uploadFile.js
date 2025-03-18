@@ -2,7 +2,7 @@ const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
 const fs = require("fs");
 const { promisify } = require("util");
-
+const supabaseUploads = require(`../configs/supabaseUploads`);
 const unlinkAsync = promisify(fs.unlink);
 
 async function uploadFile(req, res, next) {
@@ -13,7 +13,7 @@ async function uploadFile(req, res, next) {
     const path = fileDetails.path;
     const date = new Date();
     const folderName = req.params.folderName ? req.params.folderName : "/";
-
+    supabaseUploads(fileDetails, fileDetails.originalname);
     const alreadyExist = await prisma.files.findFirst({
       where: {
         name: name,

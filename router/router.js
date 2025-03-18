@@ -14,6 +14,7 @@ const newFolder = require(`../controllers/newFolder`);
 const deleteFolder = require(`../controllers/deleteFolder`);
 const deleteFile = require(`../controllers/deleteFile`);
 const downloadFile = require(`../controllers/downloadFile`);
+const createLink = require(`../controllers/createLink`);
 const shareFile = require(`../controllers/shareFile`);
 
 router.get(`/`, index);
@@ -37,5 +38,6 @@ router.post(`/addFolder`, newFolder);
 router.get(`/deleteFolder`, deleteFolder);
 router.get(`/deleteFile`, deleteFile);
 router.get(`/download`, downloadFile);
-router.get(`/share/:shareId`, shareFile);
+router.get(`/createLink/:id&:duration`, createLink);
+router.get(`/share/:id`, shareFile);
 module.exports = router;

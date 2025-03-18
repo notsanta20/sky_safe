@@ -49,3 +49,9 @@ model Folders {
   owner    Users     @relation(fields: [usersId], references: [id])
   usersId  Int
 }
+
+model LinkSession {
+  id     String   @id @default(uuid())
+  fileId String
+  expiry DateTime
+}

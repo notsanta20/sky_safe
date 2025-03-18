@@ -196,7 +196,7 @@ dialog::backdrop {
 
 .newFile-modal > form,
 .newFolder-modal > form,
-.share-modal > form {
+.share-modal form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -251,26 +251,6 @@ dialog::backdrop {
   padding: 0px 20px;
 }
 
-.share-modal-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-.share-modal-footer label {
-  font-size: 0.8rem;
-}
-
-.share-modal-footer > select,
-.share-modal-footer > button {
-  background-color: var(--light-gray);
-  color: var(--white);
-  border: 1px solid var(--text-gray);
-  border-radius: 10px;
-  padding: 10px 15px;
-}
-
 .upload {
   background-color: var(--blue);
   color: var(--white);
@@ -308,4 +288,29 @@ dialog::backdrop {
   border-radius: 10px;
   padding: 10px 20px;
   align-self: center;
+}
+
+.share-modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.share-modal-footer label {
+  font-size: 0.8rem;
+}
+
+.share-modal-footer select,
+.share-modal-footer button,
+.copy-btn {
+  background-color: var(--light-gray);
+  color: var(--white);
+  border: 1px solid var(--text-gray);
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.copy-btn {
+  display: none;
 }

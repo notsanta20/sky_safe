@@ -4,21 +4,31 @@ const path = require(`path`);
 
 async function shareFile(req, res, next) {
   try {
-    const { shareId } = req.params;
-
-    const file = await prisma.files.findFirst({
+    const { id } = req.params;
+    const date = new Date();
+    const data = await prisma.linkSession.findFirst({
       where: {
-        id: shareId,
+        id: id,
       },
     });
 
-    const filePath = path.join(__dirname, `../`, file.path);
+    if (date < data.expiry) {
+      const file = await prisma.files.findFirst({
+        where: {
+          id: data.fileId,
+        },
+      });
 
-    res.download(filePath, file.name, (err) => {
-      if (err) {
-        console.error(err);
-      }
-    });
+      const filePath = path.join(__dirname, `../`, file.path);
+
+      res.download(filePath, file.name, (err) => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    } else {
+      res.send(`Link Expired`);
+    }
   } catch (err) {
     console.error(err);
   }

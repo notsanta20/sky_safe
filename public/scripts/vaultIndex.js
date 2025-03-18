@@ -7,10 +7,13 @@ const actionBtns = document.querySelectorAll(`.file-actions`);
 const folderModal = document.querySelector(`.newFolder-modal`);
 const folderBtn = document.querySelector(`.new-folder`);
 const folderInput = document.querySelector(`.folder-input`);
-const shareBtn = document.querySelector(`.share-btn`);
+const shareBtn = document.querySelectorAll(`.share-btn`);
 const shareModal = document.querySelector(`.share-modal`);
-const closeShareBtn = document.querySelector(`.close-share-modal`);
 const getLinkBtn = document.querySelector(`.get-link`);
+const duration = document.querySelector(`#duration`);
+const closeShareBtn = document.querySelector(`.close-share-modal`);
+const copyBtn = document.querySelector(`.copy-btn`);
+let id, link;
 
 newFile.addEventListener(`click`, () => {
   fileBtn.value = ``;
@@ -47,18 +50,38 @@ async function copyClipboard(text) {
   }
 }
 
-shareBtn.addEventListener(`click`, (e) => {
+shareBtn.forEach((btn) => {
+  btn.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    shareModal.showModal();
+    id = btn.dataset.id;
+  });
+});
+
+getLinkBtn.addEventListener(`click`, async (e) => {
   e.preventDefault();
-  shareModal.showModal();
-  // const id = shareBtn.dataset.id;
-  // const link = `/share/${id}`;
-  // navigator.clipboard.writeText(link);
+  const expiry = duration.value;
+  const url = `/createLink/${id}&${expiry}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    } else {
+      getLinkBtn.style.display = `none`;
+      duration.disabled = true;
+      copyBtn.style.display = `block`;
+      link = await response.json();
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+copyBtn.addEventListener(`click`, () => {
+  navigator.clipboard.writeText(link.link);
+  shareModal.close();
 });
 
 closeShareBtn.addEventListener(`click`, () => {
   shareModal.close();
-});
-
-getLinkBtn.addEventListener(`click`, (e) => {
-  e.preventDefault();
 });
