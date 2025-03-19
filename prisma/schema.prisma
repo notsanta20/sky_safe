@@ -36,7 +36,6 @@ model Files {
   date     DateTime @default(now())
   folderId String?
   folder   Folders? @relation(fields: [folderId], references: [id], onDelete: Cascade)
-  path     String
   owner    Users    @relation(fields: [usersId], references: [id])
   usersId  Int
 }
@@ -53,7 +52,8 @@ model Folders {
 }
 
 model LinkSession {
-  id     String   @id @default(uuid())
-  fileId String
-  expiry DateTime
+  id       String   @id @default(uuid())
+  fileId   String
+  duration Int
+  expiry   DateTime
 }

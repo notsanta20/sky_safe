@@ -1,9 +1,6 @@
 const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
-const fs = require("fs");
-const { promisify } = require("util");
 const supabaseUploads = require(`../configs/supabaseConfig`).uploadFile;
-const unlinkAsync = promisify(fs.unlink);
 
 async function uploadFile(req, res, next) {
   try {
@@ -17,19 +14,18 @@ async function uploadFile(req, res, next) {
         usersId: req.user.id,
       },
     });
+
     if (!alreadyExist) {
-      supabaseUploads(req.user.id, folderName, req.file);
+      supabaseUploads(req.user.id, folderName, fileDetails);
       await prisma.files.create({
         data: {
           name: fileDetails.originalname,
           size: fileDetails.size,
           folderId: folderName,
-          path: fileDetails.path,
           usersId: req.user.id,
         },
       });
     } else {
-      await unlinkAsync(fileDetails.path);
       console.log(`File already exists`);
     }
 
@@ -39,7 +35,6 @@ async function uploadFile(req, res, next) {
       res.redirect(`/vault/${folderName}`);
     }
   } catch (err) {
-    await unlinkAsync(req.file.path);
     console.error(err);
   }
 }

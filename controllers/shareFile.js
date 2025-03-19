@@ -1,6 +1,6 @@
 const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
-const path = require(`path`);
+const supabase = require(`../configs/supabaseConfig`).downloadFile;
 
 async function shareFile(req, res, next) {
   try {
@@ -19,13 +19,14 @@ async function shareFile(req, res, next) {
         },
       });
 
-      const filePath = path.join(__dirname, `../`, file.path);
+      const link = await supabase(
+        file.usersId,
+        file.folderId,
+        file.name,
+        data.duration
+      );
 
-      res.download(filePath, file.name, (err) => {
-        if (err) {
-          console.error(err);
-        }
-      });
+      res.redirect(link.signedUrl);
     } else {
       res.send(`Link Expired`);
     }

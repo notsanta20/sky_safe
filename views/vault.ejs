@@ -90,7 +90,7 @@
                   <div class="action-buttons-container action-hide">
                     <div class="action-buttons">
                       <a
-                        href="/download?name=<%= d.name%>&location=<%= d.folderId%>"
+                        href="/download?name=<%= d.name%>&folder=<%= d.folderId%>"
                         >Download</a
                       >
                       <a href="" class="share-btn" data-id="<%= d.id%>"
@@ -114,7 +114,7 @@
                   <div class="action-buttons-container action-hide">
                     <div class="action-buttons">
                       <a
-                        href="/download?name=<%= d.name%>&location=<%= d.folderId%>"
+                        href="/download?name=<%= d.name%>&folder=<%= d.folderId%>"
                         >Download</a
                       >
                       <a href="" class="share-btn" data-id="<%= d.id%>"
@@ -145,7 +145,12 @@
             <div>File Upload</div>
           </div>
           <div class="modal-content">
-            <input type="file" name="file" class="browse-btn" />
+            <input
+              type="file"
+              name="file"
+              class="browse-btn"
+              accept="image/*,video/*"
+            />
           </div>
           <div class="modal-footer">
             <button class="upload">Upload</button>

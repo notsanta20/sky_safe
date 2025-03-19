@@ -1,10 +1,13 @@
 const supabaseAdmin = require(`../db/supabase`);
+const { decode } = require(`base64-arraybuffer`);
 
 async function uploadFile(userId, folderId, file) {
   const folder = folderId ? folderId : `/`;
+  const buffer = file.buffer.toString(`base64`);
+
   const { data, error } = await supabaseAdmin.storage
     .from("file-uploader")
-    .upload(`${userId}/${folder}/${file.originalname}`, file.path, {
+    .upload(`${userId}/${folder}/${file.originalname}`, decode(buffer), {
       contentType: file.mimetype,
     });
 
@@ -48,4 +51,23 @@ async function deleteFolder(userId, folder) {
   console.log(`Folder deleted`);
 }
 
-module.exports = { uploadFile, deleteFile, deleteFolder };
+async function downloadFile(userId, folder, file, time) {
+  let path;
+  if (folder) {
+    path = `${userId}/${folder}/${file}`;
+  } else {
+    path = `${userId}/${file}`;
+  }
+  const { data, error } = await supabaseAdmin.storage
+    .from("file-uploader")
+    .createSignedUrl(path, time, {
+      download: true,
+    });
+  if (error) {
+    console.error(`Download error ` + error);
+  }
+
+  return data;
+}
+
+module.exports = { uploadFile, deleteFile, deleteFolder, downloadFile };

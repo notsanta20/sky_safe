@@ -1,9 +1,6 @@
 const { PrismaClient } = require(`@prisma/client`);
 const prisma = new PrismaClient();
-const fs = require("fs");
-const { promisify } = require("util");
 const supabaseDelete = require(`../configs/supabaseConfig`).deleteFile;
-const unlinkAsync = promisify(fs.unlink);
 
 async function deleteFile(req, res, next) {
   const auth = req.isAuthenticated();
@@ -18,8 +15,6 @@ async function deleteFile(req, res, next) {
       });
 
       await supabaseDelete(req.user.id, location, file.name);
-
-      await unlinkAsync(file.path);
       await prisma.files.delete({
         where: {
           id: file.id,

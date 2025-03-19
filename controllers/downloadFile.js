@@ -1,28 +1,14 @@
-const { PrismaClient } = require(`@prisma/client`);
-const prisma = new PrismaClient();
-const path = require(`path`);
+const supabase = require(`../configs/supabaseConfig`).downloadFile;
 
 async function downloadFile(req, res, next) {
   const auth = req.isAuthenticated();
 
   if (auth) {
     try {
-      const { name, location } = req.query;
-      const file = await prisma.files.findFirst({
-        where: {
-          name: name,
-          location: location,
-          usersId: req.user.id,
-        },
-      });
-
-      const filePath = path.join(__dirname, `../`, file.path);
-
-      res.download(filePath, name, (err) => {
-        if (err) {
-          console.error(err);
-        }
-      });
+      const { name, folder } = req.query;
+      console.log(name, folder);
+      const file = await supabase(req.user.id, folder, name, 60);
+      res.redirect(file.signedUrl);
     } catch (err) {
       console.log(err);
     }
