@@ -1,7 +1,7 @@
-<h3 align="center">File Uploader</h3>
+<h3 align="center">Sky Safe</h3>
 
   <p align="center">
-    File uploader cloud storage app with limited capabilities of uploading image and videos up to 10MB.  
+    File uploader cloud storage app with limited capabilities of uploading image and videos up to 10MB. This app uses supabase cloud storage for storing files.
     <br />
     <a href="https://file-uploader-jcen.onrender.com" target="_blank">Live Demo</a>
   </p>
